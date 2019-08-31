@@ -1,0 +1,251 @@
+/* ------- html ------ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 body,
+span,
+div,
+a {
+    font-family: "Lato", sans-serif;
+}
+
+body {
+    height: 100%;
+    background-color: #f5f6fa !important;
+}
+
+label {
+    padding-left: 5px;
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+ul li {
+    list-style: none;
+}
+
+
+/* ---------- id -------- */
+
+#app {
+    height: 100%;
+    background-color: #f5f6fa;
+}
+
+
+/* --------- class ----------*/
+
+.container {
+    height: 100%;
+}
+
+.content {
+    margin-left: 4% !important;
+    margin-top: 65px;
+    flex-flow: column wrap;
+}
+
+.content-body {
+    background-color: white;
+    margin-top: 15px;
+}
+
+.button-inline {
+    width: 100%;
+    margin-bottom: 5px;
+    margin-right: 3px;
+    border-radius: 4px !important;
+}
+
+.flex-inlines {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.flex-inlines>.inline {
+    margin-right: 20px !important;
+}
+
+.flex-box,
+.flex-block {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.flex-box>.vs-row {
+    margin-bottom: 10px;
+}
+
+.flex-block>div {
+    margin-top: 10px;
+}
+
+.spacing-vertical>div {
+    margin-bottom: 10px;
+}
+
+.login-box {
+    display: flex;
+    flex-flow: column;
+    border-radius: 5px;
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: white;
+}
+
+.login-box>div {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.border-square {
+    border: 1px solid #a8a8a8;
+    border-radius: 3px;
+}
+
+.position {
+    position: fixed;
+}
+
+.parent-tab-content {
+    height: 400px;
+    overflow: scroll;
+}
+
+
+/* ::-webkit-scrollbar-track {
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+} */
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+}
+
+.prompt-small .vs-popup {
+    width: 400px !important;
+}
+
+.vs-row .prompt-item>div {
+    margin-top: 10px !important;
+}
+
+.table-details tr td {
+    padding: 5px;
+}
+
+.footer-sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-sidebar>button {
+    border: 0px solid rgba(0, 0, 0, 0) !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.07) !important;
+    border-radius: 0px !important;
+}
+
+
+/* -------------------------- */
+
+
+/* class on vuesax look at HTML*/
+
+.vs-navbar {
+    padding-left: 20%;
+    position: fixed !important;
+}
+
+.vs-sidebar {
+    /* background: #ebedf7 !important; */
+    background: #0f0f0f !important;
+    z-index: 10000 !important;
+    color: #f5f5f5;
+}
+
+.vs-sidebar--header {
+    padding: 14px 5px !important;
+}
+
+.vs-sidebar--background {
+    background: transparent;
+}
+
+.vs-sidebar.vs-sidebar-parent {
+    position: fixed !important;
+}
+
+a .router-link-exact-active .router-link-active {
+    color: white !important;
+}
+
+.vs-sidebar-primary .vs-sidebar-item-active a {
+    color: white !important;
+}
+
+.nav-item-flex {
+    display: flex !important;
+    align-items: center;
+}
+
+.vs-popup--content form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.vs-popup--content form>div {
+    margin: 10px;
+}
+
+.vs-input {
+    display: flex;
+    flex-flow: row wrap;
+    width: 500px;
+}
+
+.vs-input>label div {
+    margin-right: 20px;
+}
+
+.ul-tabs li button {
+    width: 100px;
+}
+
+
+/* ---------------- */
+
+
+/*
+ * Override by Nur Muhammad
+ */
+
+.vs-button {
+    border-radius: 4px !important;
+}
+
+.vs-dropdown-menu {
+    white-space: nowrap;
+}
+
+.vs-pagination--li .effect {
+    border-radius: 50% !important;
+}

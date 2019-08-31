@@ -1,0 +1,34 @@
+{
+    "name": "ep-vue",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "node_modules/.bin/webpack --mode=development",
+        "prod-build": "node_modules/.bin/webpack --mode=production"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.5.5",
+        "babel-loader": "^8.0.6",
+        "babel-plugin-add-module-exports": "^1.0.2",
+        "css-loader": "^3.2.0",
+        "uglifyjs-webpack-plugin": "^2.2.0",
+        "vue": "^2.6.10",
+        "vue-loader": "^15.7.1",
+        "vue-template-compiler": "^2.6.10",
+        "webpack": "^4.39.3",
+        "webpack-cli": "^3.3.7"
+    },
+    "dependencies": {
+        "vue-localstorage": "^0.6.2",
+        "vue-router": "^3.1.2",
+        "vue-scroll-stop": "^0.1.5",
+        "vue2-timepicker": "^0.1.4",
+        "vuesax": "^3.9.0",
+        "vuex": "^3.1.0",
+        "vuex-persist": "^2.0.0"
+    }
+}
