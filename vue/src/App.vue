@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <DashboardLayout></DashboardLayout>
   </div>
 </template>
 <script>
@@ -9,6 +9,6 @@ export default {
   name: "app",
   components:{
     DashboardLayout
-  }  
+  }
 };
 </script>

@@ -153,9 +153,9 @@ export default [
         name: "404",
         path: site_url + "/v1/notfound",
         component: NotFound
-    },
-    {
-        path: "*",
-        redirect: "/v1/notfound"
     }
+    // {
+    //     path: "*",
+    //     redirect: "/v1/notfound"
+    // }
 ]

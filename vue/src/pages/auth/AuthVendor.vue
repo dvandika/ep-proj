@@ -87,7 +87,7 @@ export default {
         let form = new FormData();
         form.append("username", this.form.username);
         form.append("password", this.form.password)
-      this.$store.dispatch("user/loginVendor", form);
+        this.$store.dispatch("user/loginVendor", form).then(res => this.$router.push({name: "vendor-dashboard"}));
     }
   }
 };

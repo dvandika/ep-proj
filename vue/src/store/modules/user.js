@@ -42,8 +42,7 @@ const actions = {
         commit("setUserStatus", null);
         return axios.post(site_url + "/vendors/auth/do_login", form)
             .then(res => {
-                console.log(res.data);
-                route.push({ name: "vendor-dashboard" });
+                commit("setState", res.data);
             })
             .catch(function(error) {
                 console.log(error);
