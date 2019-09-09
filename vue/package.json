@@ -26,6 +26,7 @@
         "vue-localstorage": "^0.6.2",
         "vue-router": "^3.1.2",
         "vue-scroll-stop": "^0.1.5",
+        "vue2-datepicker": "^2.12.0",
         "vue2-timepicker": "^0.1.4",
         "vuesax": "^3.9.0",
         "vuex": "^3.1.0",

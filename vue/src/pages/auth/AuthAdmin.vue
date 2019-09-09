@@ -5,19 +5,31 @@
         <img :src="base_url+'assets/images/aski-logo.png'" :style="{width:'100px'}" />
       </vs-col>
       <vs-col vs-offset="1" vs-type="flex" :style="{'flex-direction':'column'}" vs-w="7">
-        <div :style="{'font-size':'18px'}">Admin Login</div>
-        <div :style="{'font-size':'12px'}">PT. Astra Komponen Indonesia</div>
+        <h2 :style="{'font-size':'18px'}">Admin Login</h2>
+        <div :style="{'font-size':'10px'}">PT. Astra Komponen Indonesia</div>
       </vs-col>
     </vs-row>
     <vs-col
       class="divider"
+      style="margin-left: auto; margin-right: auto; margin-bottom: 0"
       :style="{'margin-left' : 'auto', 'margin-right' : 'auto'}"
       vs-w="10"
-      vs-type="flex"
       vs-justify="flex-start"
       vs-align="flex-start"
     >
       <vs-divider color="primary"></vs-divider>
+    </vs-col>
+    <vs-col
+      v-if="status.failed"
+      vs-type="flex"
+      vs-align="flex-start"
+      vs-justify="flex-start"
+      vs-w="10"
+      style="padding:0; margin: 2px auto"
+    >
+      <vs-alert :active="status.failed" color="danger" icon="new_releases">
+        <span>{{ status.message }}</span>
+      </vs-alert>
     </vs-col>
     <vs-row
       vs-type="flex"
@@ -59,17 +71,18 @@
 import { mapGetters, mapState } from "vuex";
 
 export default {
-  name: "auth-admin",
+  name: "auth-vendor",
   data() {
     return {
       form: {
-          username: '',
-          password: ''
+        username: "",
+        password: ""
       }
     };
   },
   computed: {
     ...mapState({
+      status: state => state.user.status,
       userStatus: state => state.user.userStatus,
       role: state => state.user.role
     }),
@@ -84,10 +97,18 @@ export default {
   },
   methods: {
     login: function() {
-        let user = this.form.username;
-        let pass = this.form.password;
-      this.$store.dispatch("user/loginAdmin", { user, pass });
+      let form = new FormData();
+      form.append("username", this.form.username);
+      form.append("password", this.form.password);
+      this.$store.dispatch("user/loginAdmin", form).then(success => {
+        if (success) {
+          this.$router.push({ name: "admin-dashboard" });
+        }
+      });
     }
+  },
+  beforeCreate() {
+    this.$store.commit("user/clearStatus");
   }
 };
 </script>

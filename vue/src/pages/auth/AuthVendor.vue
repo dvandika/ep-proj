@@ -1,4 +1,5 @@
 <template>
+  <!-- <div class="error"></div> -->
   <div class="login-box">
     <vs-row class="head" vs-type="flex" vs-w="10" vs-justify="center" vs-align="center">
       <vs-col vs-type="flex" vs-align="center" vs-justify="center" vs-w="4">
@@ -18,6 +19,18 @@
       vs-align="flex-start"
     >
       <vs-divider color="primary"></vs-divider>
+    </vs-col>
+    <vs-col
+      v-if="status.failed"
+      vs-type="flex"
+      vs-align="flex-start"
+      vs-justify="flex-start"
+      vs-w="10"
+      style="padding:0; margin: 2px auto"
+    >
+      <vs-alert :active="status.failed" color="danger" icon="new_releases">
+        <span>{{ status.message }}</span>
+      </vs-alert>
     </vs-col>
     <vs-row
       vs-type="flex"
@@ -39,18 +52,31 @@
       <vs-col vs-type="flex" vs-justify="center" vs-w="10" :style="{'padding':'3px'}">
         <vs-input
           type="password"
-          label="Passaword"
+          label="Password"
           placeholder="Password"
           v-model="form.password"
           :style="{'width' : '75%'}"
           size="large"
         />
       </vs-col>
-      <vs-col vs-type="flex" vs-justify="left" vs-w="6" :style="{'padding':'3px'}">
+      <vs-col vs-type="flex" vs-justify="left" vs-w="5" :style="{'padding':'3px'}">
         <span :style="{'font-size' : '10px'}">v.1.0.0</span>
       </vs-col>
-      <vs-col vs-type="flex" vs-justify="center" vs-w="4" :style="{'padding':'3px'}">
-        <vs-button type="filled" icon="lock" @click="login()">Login</vs-button>
+      <vs-col
+        vs-type="flex"
+        vs-align="center"
+        vs-justify="center"
+        vs-w="5"
+        :style="{'padding':'3px'}"
+      >
+        <!-- <vs-button ref="loadableButton" type="filled" icon="lock" @click="vLogin()">Login</vs-button> -->
+        <vs-button
+          ref="loadableButton"
+          @click="login"
+          type="relief"
+          icon="lock"
+          vslor="primary"
+        >Login</vs-button>
       </vs-col>
     </vs-row>
   </div>
@@ -63,13 +89,14 @@ export default {
   data() {
     return {
       form: {
-          username: '',
-          password: ''
+        username: "",
+        password: ""
       }
     };
   },
   computed: {
     ...mapState({
+      status: state => state.user.status,
       userStatus: state => state.user.userStatus,
       role: state => state.user.role
     }),
@@ -83,12 +110,19 @@ export default {
     })
   },
   methods: {
-    login: function() {
-        let form = new FormData();
-        form.append("username", this.form.username);
-        form.append("password", this.form.password)
-        this.$store.dispatch("user/loginVendor", form).then(res => this.$router.push({name: "vendor-dashboard"}));
+    login() {
+      let form = new FormData();
+      form.append("username", this.form.username);
+      form.append("password", this.form.password);
+      this.$store.dispatch("user/loginVendor", form).then(success => {
+        if (success) {
+          this.$router.push({ name: "vendor-dashboard" });
+        }
+      });
     }
+  },
+  beforeCreate() {
+    this.$store.commit("user/clearStatus");
   }
 };
 </script>

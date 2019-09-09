@@ -15,9 +15,7 @@
     >
       <img :src="base_url + 'assets/images/aski-logo.png'" alt="Logo" class="logo" />
     </div>
-    <span :style="{'justify-content':'center', 'display':'flex', 'text-align':'center'}">
-      {{ this.user.role }}
-    </span>
+    
     <template v-for="component in sidebar">
       <template v-if="component.type == 'single'">
         <vs-sidebar-item
@@ -25,23 +23,17 @@
           :icon="component.icon"
           :key="component.index"
           :to="component.link"
-        >{{component.title}}
-        </vs-sidebar-item>
+        >{{component.title}}</vs-sidebar-item>
       </template>
       <template v-else>
-        <vs-sidebar-group
-          :title="component.title"
-          :key="component.title"
-          open
-          >
+        <vs-sidebar-group :title="component.title" :key="component.title" open>
           <vs-sidebar-item
             v-for="item in component.child"
             :index="item.index"
             :icon="item.icon"
             :key="item.index"
             :to="item.link"
-            >{{item.title}}
-          </vs-sidebar-item>
+          >{{item.title}}</vs-sidebar-item>
         </vs-sidebar-group>
       </template>
     </template>
@@ -52,7 +44,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex';
+import { mapGetters, mapState } from "vuex";
 
 import SidebarAdmin from "./SidebarAdmin.js";
 import SidebarOperator from "./SidebarOperator.js";
@@ -62,27 +54,27 @@ import SidebarDev from "./SidebarDev.js";
 export default {
   name: "dashboard-sidebar",
   computed: {
-    ...mapGetters('user', {
-        user: 'user'
+    ...mapGetters("user", {
+      user: "user"
     }),
     sidebar: function() {
-      if(this.user.role === 'admin') {
+      if (this.user.role === "admin") {
         return SidebarAdmin;
-      } else if (this.user.role === 'operator') {
+      } else if (this.user.role === "operator") {
         return SidebarOperator;
-      } else if (this.user.role === 'vendor') {
+      } else if (this.user.role === "vendor") {
         return SidebarVendor;
-      } else if (this.user.role === 'developer') {
-          return SidebarDev;
-      };
+      } else if (this.user.role === "developer") {
+        return SidebarDev;
+      }
     },
-    getIndex:function(){
+    getIndex: function() {
       return this.index;
     },
-    ...mapGetters('pages', {
-        index: 'index',
-        site_url: 'site_url',
-        base_url: 'base_url'
+    ...mapGetters("pages", {
+      index: "index",
+      site_url: "site_url",
+      base_url: "base_url"
     })
   },
   data() {
@@ -96,26 +88,32 @@ export default {
         ? true
         : false;
     },
-    logout: function() {
+    logout() {
       let self = this;
-      window.location.href = this.site_url + '/auth/logout';
+      let role = this.user.role;
+      if (role === "vendor") {
+        window.location.href = this.site_url + "/vendors/auth/logout";
+      } else if (role === "operator" || role === "admin" || role === "developer") {
+        window.location.href = this.site_url + "/admins/auth/logout";
+      }
     },
-    activeIndex:function(num){
+    activeIndex: function(num) {
       let self = this;
-      self.$store.dispatch('pages/changeIndex', num)
+      self.$store.dispatch("pages/changeIndex", num);
     }
   },
   mounted() {
-    console.log()
+    console.log();
   }
 };
 </script>
 
 <style>
 .header-sidebar {
-    justify-content: center;
+  justify-content: center;
 }
 .logo {
-    width: 100px;
+  width: 100px;
+  height: 25px;
 }
 </style>

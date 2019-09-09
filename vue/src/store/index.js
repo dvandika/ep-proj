@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersist from 'vuex-persist';
 
+// import alert from './modules/alert';
 import user from './modules/user';
 import pages from './modules/pages';
 
@@ -15,6 +16,7 @@ const vuexPersist = new VuexPersist({
 
 export default new Vuex.Store({
     modules: {
+        // alert,
         user,
         pages,
     },

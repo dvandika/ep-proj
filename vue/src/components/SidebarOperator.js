@@ -1,22 +1,31 @@
 export default [{
+        title: "Home",
+        type: "single",
+        active: false,
+        index: 0,
+        link: {
+            name: "admin-home"
+        }
+    },
+    {
         title: "Order sheet",
         type: "group",
         child: [{
-                title: "Upload Order Sheet",
-                icon: "cloud_upload",
-                active: false,
-                index: 0,
-                link: {
-                    name: "under-constructed"
-                }
-            },
-            {
                 title: "List Order Sheet",
                 icon: "list",
                 active: false,
                 index: 1,
                 link: {
-                    name: "under-constructed"
+                    name: "list-os"
+                }
+            },
+            {
+                title: "Upload Order Sheet",
+                icon: "cloud_upload",
+                active: false,
+                index: 2,
+                link: {
+                    name: "upload-os"
                 }
             }
         ]
@@ -25,13 +34,23 @@ export default [{
         title: "Vendor Stock",
         type: "group",
         child: [{
-            title: "Component Stock",
-            icon: "storage",
-            active: false,
-            index: 2,
-            link: {
-                name: "under-constructed"
+                title: "Material Stock",
+                icon: "storage",
+                active: false,
+                index: 3,
+                link: {
+                    name: "material-stock"
+                }
+            },
+            {
+                title: "Template Stock",
+                icon: "folder",
+                active: false,
+                index: 4,
+                link: {
+                    name: "template-stock"
+                }
             }
-        }]
+        ]
     }
 ];

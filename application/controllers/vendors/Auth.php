@@ -15,7 +15,7 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model(['m_user', 'm_authorized']);
+        $this->load->model(['m_authentication']);
     }
 
     public function index()
@@ -41,7 +41,7 @@ class Auth extends CI_Controller
             $username = $this->input->post('username');
             $password = md5($this->input->post('password'));
 
-            $userdata = $this->m_authorized->login_vendor($username, $password);
+            $userdata = $this->m_authentication->login_vendor($username, $password);
             if ($userdata) {
                 $user = new stdClass;
                 $user->id            = $userdata->ID;
@@ -62,19 +62,23 @@ class Auth extends CI_Controller
                     ->set_content_type('application/json')
                     ->set_output(json_encode($data));
             } else {
-                $msg = "Username / Password salah.";
+                $msg = "Username atau Password salah!";
             }
         } else {
-            $msg = "Data belum lengkap.";
+            $msg = "Mohon masukkan data dengan lengkap!";
         }
 
         $data['message'] = $msg;
-
-        var_dump($this->db->last_query());
 
         return $this->output
             ->set_status_header(400)
             ->set_content_type('application/json')
             ->set_output(json_encode($data));
+    }
+    
+    public function logout()
+    {
+        clear_userdata();
+        redirect('/');
     }
 }

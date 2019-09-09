@@ -26,9 +26,9 @@ if ( ! function_exists('auth_checker'))
 		if (empty($userdata)) {
 			// Save current url
 			$_ci->session->set_userdata(AUTH_VISIT_SESS_NAME, uri_string());
-			redirect('v1/');
+			redirect('/v1/dashboard');
 		} else if (!in_array($userdata->role, explode(',', $roles))) {
-			redirect('v1/error/403');
+			redirect('/v1/error/403/');
 		}
 	} 
 }

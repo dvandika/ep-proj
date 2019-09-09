@@ -326,7 +326,8 @@ $config['cache_query_string'] = FALSE;
 */
 // Random Encryption Key
 
-$config['encryption_key'] = '6dbZAljVVeTjDnVIyQcfx24MeIiALsrCXgJD5U4wKGQ=';
+// $config['encryption_key'] = '6dbZAljVVeTjDnVIyQcfx24MeIiALsrCXgJD5U4wKGQ=';
+$config['encryption_key'] = 'Vlp8EMOXWhLK1rmhJA2srKuTcKU0KsBB';
 
 /*
 |--------------------------------------------------------------------------

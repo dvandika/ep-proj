@@ -4,40 +4,8 @@ export default [{
         active: false,
         index: 0,
         link: {
-            name: "under-constructed"
+            name: "admin-home"
         }
-    },
-    {
-        title: "Master Data",
-        type: "group",
-        child: [{
-                title: "Master Data Vendor",
-                icon: "dashboard",
-                active: false,
-                index: 1,
-                link: {
-                    name: "under-constructed"
-                }
-            },
-            {
-                title: "Master Data User",
-                icon: "people",
-                active: false,
-                index: 2,
-                link: {
-                    name: "under-constructed"
-                }
-            },
-            {
-                title: "Master Data Informasi",
-                icon: "info",
-                active: false,
-                index: 3,
-                link: {
-                    name: "under-constructed"
-                }
-            }
-        ]
     },
     {
         title: "Order sheet",
@@ -46,18 +14,18 @@ export default [{
                 title: "List Order Sheet",
                 icon: "list",
                 active: false,
-                index: 4,
+                index: 1,
                 link: {
-                    name: "under-constructed"
+                    name: "list-os"
                 }
             },
             {
                 title: "Upload Order Sheet",
                 icon: "cloud_upload",
                 active: false,
-                index: 5,
+                index: 2,
                 link: {
-                    name: "under-constructed"
+                    name: "upload-os"
                 }
             }
         ]
@@ -66,13 +34,55 @@ export default [{
         title: "Vendor Stock",
         type: "group",
         child: [{
-            title: "Component Stock",
-            icon: "storage",
-            active: false,
-            index: 6,
-            link: {
-                name: "under-constructed"
+                title: "Material Stock",
+                icon: "storage",
+                active: false,
+                index: 3,
+                link: {
+                    name: "material-stock"
+                }
+            },
+            {
+                title: "Template Stock",
+                icon: "folder",
+                active: false,
+                index: 4,
+                link: {
+                    name: "template-stock"
+                }
             }
-        }]
+        ]
+    },
+    {
+        title: "Master Data",
+        type: "group",
+        child: [{
+                title: "Master Data Vendor",
+                icon: "dashboard",
+                active: false,
+                index: 5,
+                link: {
+                    name: "md-vendor"
+                }
+            },
+            {
+                title: "Master Data User",
+                icon: "people",
+                active: false,
+                index: 6,
+                link: {
+                    name: "md-user"
+                }
+            },
+            {
+                title: "Master Data Material",
+                icon: "info",
+                active: false,
+                index: 7,
+                link: {
+                    name: "md-material"
+                }
+            }
+        ]
     }
 ];

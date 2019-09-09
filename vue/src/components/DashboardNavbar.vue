@@ -4,7 +4,8 @@
     <vs-spacer></vs-spacer>
     <vs-navbar-item index="1">
       <a href.prevent class="nav-item-flex">
-        <span style="color:white;">Hi,  {{ user.fullname }}</span>
+        <span v-if="user.fullname" style="color:white;">Hi,  {{ user.fullname }}</span>
+        <span v-if="user.Fullname" style="color:white;">Hi,  {{ user.Fullname }}</span>
       </a>
     </vs-navbar-item>
   </vs-navbar>

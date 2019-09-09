@@ -3,20 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_user extends CI_Model
 {
-    private $table = 'tb_admin_user';
-
-    public function login_admin($username, $password)
-    {
-        // $only_admin = ENVIRONMENT === 'production' ? "u.role='admin'" : '1=1';
-
-        return $this->db->select('*')
-            ->from('tb_admin_user u')
-            ->where('u.username', $username)
-            ->where('u.password', $password)
-            // ->where($only_admin)
-            ->get($this->table)
-            ->row();
-    }
+    /**
+     *  M_user
+     *  ==================
+     *  - Admin user
+     */
+    
+    private $table = 'ep_admin';
 
     public function get_all()
     {
@@ -34,7 +27,7 @@ class M_user extends CI_Model
 
     public function update($data, $id)
     {
-        return $this->db->where('os_id', $id)
+        return $this->db->where('id', $id)
             ->update($this->table, $data);
     }
 

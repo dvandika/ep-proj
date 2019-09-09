@@ -1,7 +1,8 @@
 <template>
 <div id="main">
     	<div class="fof">
-        		<h1>Error 404</h1>
+        		<h1>Forbidden</h1>
+        		<h2>403</h2>
     	</div>
 </div>
 </template>
@@ -9,7 +10,7 @@
 <script>
 
 export default {
-  name: "not-found"
+  name: "403-forbidden"
 };
 </script>
 
