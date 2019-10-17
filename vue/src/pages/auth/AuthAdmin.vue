@@ -109,6 +109,7 @@ export default {
   },
   beforeCreate() {
     this.$store.commit("user/clearStatus");
+    this.$store.commit("pages/clearIndex");
   }
 };
 </script>
@@ -116,6 +117,11 @@ export default {
 body {
   height: auto;
   min-height: 100%;
+  background-image: url("http://eop.aski.id/assets/sbadmin/img/background-web.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
   background: #d2d6de;
 }
 .vs-input {

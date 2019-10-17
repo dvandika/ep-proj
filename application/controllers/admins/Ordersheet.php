@@ -63,7 +63,8 @@ class Ordersheet extends CI_Controller
                     $transm = str_replace('.', ':', $i[6]);
                     $deliverydate = date('Y-m-d', strtotime($i[7]));
 
-                    $os_data = [
+
+                    $os_detail = [
                         'os_id' => '',
                         'os_no' => $os,
                         'os_vendor' => $vendor,
@@ -78,12 +79,13 @@ class Ordersheet extends CI_Controller
                         'os_sum_schedule_qty' => intval($i[12]),
                         'os_status' => $i[10],
                         'os_status_item' => $i[9],
+                        'os_print_enc' => md5($os),
                         'os_print_status' => 'UNPRINTED', // set default UNPRINTED
                         'os_date_printed' => NULL,
                         'os_date_uploaded' => date('Y-m-d H:i:s'),
                         'os_upload_by' => userdata()->username // userdata()->username
                     ];
-                    $save = $this->m_ordersheet->insert($os_data);
+                    $save = $this->m_ordersheet->insert($os_detail);
                     if ($save) {
                         $st_success[]++;
                     }

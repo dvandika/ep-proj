@@ -2,12 +2,6 @@
   <vs-col vs-type="flex" vs-w="11" class="content">
     <h3>Upload Ordersheet</h3>
     <vs-col class="content-body" vs-w="12">
-      <router-link
-        :to="{name: 'list-os'}"
-        :style="{'margin': '15px 0px 30px 30px', 'display' : 'flex', 'align-items': 'center'}"
-      >
-        <i class="material-icons">chevron_left</i>Kembali
-      </router-link>
       <!-- vendor information -->
       <vs-row vs-type="flex" vs-justify="left" :style="{'margin': '15px 0'}">
         <vs-col vs-offset="1" vs-w="2">Vendor Name</vs-col>

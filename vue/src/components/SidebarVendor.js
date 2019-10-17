@@ -1,43 +1,42 @@
 export default [{
         title: "Home",
-        type: 'single',
-        active: true,
+        type: "single",
+        active: false,
         icon: "dashboard",
         index: 0,
         link: {
-            name: "home-vendor"
+            name: "vendor-home"
         }
     },
     {
         title: "Order Sheet",
-        type: 'single',
-        active: true,
+        type: "single",
+        active: false,
         icon: "list",
         index: 1,
         link: {
-            name: "under-constructed"
+            name: "vendor-os"
         }
     },
     {
-        title: "Component Stock",
+        title: "Stock Report",
         type: "group",
-        icon: "store",
         child: [{
-                title: "Report Component",
+                title: "Daily Stock Report",
                 icon: "store",
-                active: true,
+                active: false,
                 index: 2,
                 link: {
-                    name: "under-constructed"
+                    name: "vendor-report"
                 }
             },
             {
-                title: "History Report",
+                title: "Template Daily Stock Report",
                 icon: "history",
-                active: true,
+                active: false,
                 index: 3,
                 link: {
-                    name: "under-constructed"
+                    name: "vendor-template-report"
                 }
             }
         ]

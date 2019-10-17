@@ -122,6 +122,7 @@ export default {
     }
   },
   beforeCreate() {
+    this.$store.commit("pages/clearIndex");
     this.$store.commit("user/clearStatus");
   }
 };

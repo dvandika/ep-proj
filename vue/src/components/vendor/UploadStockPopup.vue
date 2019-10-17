@@ -1,5 +1,5 @@
 <template>
-  <vs-popup title="Upload Stock Daily Report" :active.sync="active">
+  <vs-popup button-close-hidden title="Daily Stock Report" :active.sync="active">
     <vs-card style="background-color: #b9d3ff;">
       <div slot="header">
         <h3>Informasi Penting</h3>
@@ -15,15 +15,12 @@
       </vs-col>
       <vs-col vs-offset="2" vs-w="1">Catatan Tambahan</vs-col>
       <vs-col vs-offset="1" vs-w="6">
-        <vs-textarea
-          counter="50"
-          :counter-danger.sync="counterDanger"
-          v-model="notes"
-        />
+        <vs-textarea counter="50" :counter-danger.sync="counterDanger" v-model="notes" />
       </vs-col>
     </vs-row>
     <vs-row vs-type="flex" vs-justify="center">
       <vs-button color="success" @click="save">Upload</vs-button>
+      <vs-button color="primary" @click="close">Close</vs-button>
     </vs-row>
   </vs-popup>
 </template>
@@ -47,9 +44,14 @@ export default {
     onFileChange() {
       this.file = this.$refs.file.files[0];
     },
+    close() {
+      this.active = false;
+      this.$emit("saved");
+    },
     save() {
       let formData = new FormData();
-      formData.append("note", this.notes);
+      formData.append("date");
+      formData.append("notes", this.notes);
       formData.append("file", this.file);
       axios
         .post(this.site_url + "/stock/do_upload", formData)

@@ -80,6 +80,10 @@ export default {
       this.$store.dispatch("user/loginDebug", role);
     }
   },
+  beforeCreate() {
+    this.$store.commit("pages/clearIndex");
+    this.$store.commit("user/clearStatus");
+  }
 };
 </script>
 <style>

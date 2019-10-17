@@ -16,15 +16,32 @@ class M_ordersheet extends CI_Model
         // ->order_by('o.DeliveryDate', 'ASC')
         // ->get()
         // ->result();
+        if ($code = NULL) {
+            $where = '1=1';
+        } else {
+            $where = "os_vendor='$code'";
+        }
         
         $where = $code === NULL ? '1=1' : "os_vendor='$code'";
-        return $this->db->select('o.*, v.vendorname vendor_name')
+        return $this->db->select('count(o.os_material) as count_material, o.*, GROUP_CONCAT(o.os_material) as material_no, GROUP_CONCAT(o.os_material_desc) as material_desc, v.vendorname vendor_name')
             ->join('ep_vendor v', 'o.os_vendor=v.vendorcode')
             ->where($where)
+            ->group_by('os_no')
             ->from("$this->table o")
             ->order_by('os_delivery_date', 'ASC')
             ->get()
             ->result();
+    }
+
+    public function get_os($os_no, $md5)
+    {
+        return $this->db->select('o.*, v.vendorname vendor_name')
+        ->join('ep_vendor v', 'o.os_vendor = v.vendorcode')
+        ->where('o.os_print_enc', $md5)
+        ->where('o.os_no', $os_no)
+        ->from("$this->table o")
+        ->get()
+        ->result();
     }
 
     public function insert($data)

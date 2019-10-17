@@ -107,28 +107,7 @@ const actions = {
         commit("setUserStatus", "success");
         commit("setState", payload);
         return getters.isLoggedIn;
-    },
-    // logout: ({ commit }, payload) => {
-    //     commit("setUserStatus", null);
-    //     commit("setState", null);
-    //     let logoutURL = "";
-    //     if (payload === "vendor") {
-    //         logoutURL = site_url + "/vendors/logout";
-    //     } else if (payload === "operator" || payload === "admin" || payload === "developer") {
-    //         logoutURL = site_url + "/admins/logout";
-    //     }
-    //     return axios
-    //         // .get(site_url + "/auth/logout")
-    //         .get(logoutURL)
-    //         .then(response => {
-    //             console.log(logoutURL)
-    //             commit("setUserStatus", "success");
-    //             return getters.isLoggedIn;
-    //         })
-    //         .catch(function(error) {
-    //             commit("setUserStatus", "failed");
-    //         });
-    // }
+    }
 };
 
 export default {

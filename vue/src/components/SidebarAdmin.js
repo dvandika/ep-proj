@@ -32,33 +32,34 @@ export default [{
         ]
     },
     {
-        title: "Vendor Stock",
+        title: "Vendor Report Stock",
         type: "group",
-        child: [{
-                title: "Material Stock",
-                icon: "storage",
-                active: false,
-                index: 3,
-                link: {
-                    name: "material-stock"
-                }
-            },
+        child: [
+            // {
+            //     title: "Material Stock",
+            //     icon: "storage",
+            //     active: false,
+            //     index: 3,
+            //     link: {
+            //         name: "material-stock"
+            //     }
+            // },
             {
-                title: "Upload Report Stock",
-                icon: "add",
+                title: "List Daily Report",
+                icon: "file_copy",
                 active: false,
                 index: 4,
                 link: {
-                    name: "upload-stock"
+                    name: "list-daily-report"
                 }
             },
             {
-                title: "Template Stock",
+                title: "Template Daily Report",
                 icon: "folder",
                 active: false,
                 index: 5,
                 link: {
-                    name: "template-stock"
+                    name: "template-daily-report"
                 }
             }
         ]
@@ -83,15 +84,15 @@ export default [{
                 link: {
                     name: "md-user"
                 }
-            },
-            {
-                title: "Master Data Material",
-                icon: "info",
-                active: false,
-                index: 8,
-                link: {
-                    name: "md-material"
-                }
+                // },
+                // {
+                //     title: "Master Data Material",
+                //     icon: "info",
+                //     active: false,
+                //     index: 8,
+                //     link: {
+                //         name: "md-material"
+                //     }
             }
         ]
     }

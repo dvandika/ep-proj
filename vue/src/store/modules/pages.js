@@ -30,12 +30,15 @@ const getters = {
 const mutations = {
     setIndex(state, data) {
         state.index = data;
+    },
+    clearIndex(state) {
+        state.index = 0;
     }
 };
 
 const actions = {
     changeIndex: ({ commit }, payload) => {
-        commit('setIndex', payload)
+        commit('setIndex', payload);
     }
 };
 

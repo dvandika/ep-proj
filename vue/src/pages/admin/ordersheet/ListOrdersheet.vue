@@ -58,10 +58,11 @@
             <vs-th sort-key="material_desc">Material Desc.</vs-th>
             <vs-th sort-key="os_transm">Transm.</vs-th>
             <vs-th sort-key="deliverydate">Delivery Date</vs-th>
-            <vs-th sort-key="kanban_qty">Kanban Qty</vs-th>
-            <vs-th sort-key="schedule_qty">Schedule Qty</vs-th>
+            <!-- <vs-th sort-key="kanban_qty">Kanban Qty</vs-th> -->
+            <!-- <vs-th sort-key="schedule_qty">Schedule Qty</vs-th> -->
             <vs-th sort-key="bun">BUn</vs-th>
             <vs-th sort-key="total_qty">Total Schedule Qty</vs-th>
+            <vs-th sort-key="print_status">Print Status</vs-th>
             <vs-th sort-key="action">Action</vs-th>
           </template>
 
@@ -74,10 +75,11 @@
               <vs-td :data="data[indextr].os_material_desc">{{data[indextr].os_material_desc}}</vs-td>
               <vs-td :data="data[indextr].os_transm">{{data[indextr].os_transm}}</vs-td>
               <vs-td :data="data[indextr].os_delivery_date">{{data[indextr].os_delivery_date}}</vs-td>
-              <vs-td :data="data[indextr].os_kanban_qty">{{data[indextr].os_kanban_qty}}</vs-td>
-              <vs-td :data="data[indextr].os_schedule_qty">{{data[indextr].os_schedule_qty}}</vs-td>
+              <!-- <vs-td :data="data[indextr].os_kanban_qty">{{data[indextr].os_kanban_qty}}</vs-td> -->
+              <!-- <vs-td :data="data[indextr].os_schedule_qty">{{data[indextr].os_schedule_qty}}</vs-td> -->
               <vs-td :data="data[indextr].os_bun">{{data[indextr].os_bun}}</vs-td>
               <vs-td :data="data[indextr].os_sum_schedule_qty">{{data[indextr].os_sum_schedule_qty}}</vs-td>
+              <vs-td :data="data[indextr].os_print_status">{{data[indextr].os_print_status}}</vs-td>
               <vs-td :data="data[indextr].os_id">
                 <vs-button
                   icon="delete"
@@ -101,7 +103,7 @@ import DatePicker from "vue2-datepicker";
 
 export default {
   name: "os-list",
-  component: {
+  components: {
     DatePicker
   },
   computed: {
@@ -184,7 +186,8 @@ export default {
       formData.append("vendor", this.form.vendor);
       formData.append("delivery_date", this.form.date);
       formData.append("print_status", this.form.print_status);
-      console.log(formData);
+      console.log(this.form.date);
+      console.log(this.form.vendor);
     },
     fetchVendors() {
       axios.get(this.site_url + "/admins/vendor").then(res => {

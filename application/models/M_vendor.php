@@ -21,6 +21,11 @@ class M_vendor extends CI_Model
             ->result();
     }
 
+    public function get_shortname($code)
+    {
+        return $this->db->select('VendorShortname')->get($this->table)->row();
+    }
+
     public function get_by_code($code)
     {
         return $this->db->get_where($this->table, ['VendorCode' => $code])->row();
@@ -28,7 +33,7 @@ class M_vendor extends CI_Model
 
     public function get($id)
     {
-        return $this->db->get_where($this->table, ['id' => $id])->row();
+        return $this->db->get_where($this->table, ['id' => $id])->result();
     }
 
     public function insert($data)

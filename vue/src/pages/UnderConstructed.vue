@@ -10,6 +10,9 @@
 
 <script>
 export default {
-  name:"under-constructed"
+  name:"under-constructed",
+  beforeCreate() {
+    this.$store.dispatch("user/changeIndex", "0");
+  }
 }
 </script>

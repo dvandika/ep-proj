@@ -31,26 +31,16 @@ export default [{
         ]
     },
     {
-        title: "Vendor Stock",
+        title: "Vendor Report Stock",
         type: "group",
         child: [{
-                title: "Material Stock",
-                icon: "storage",
-                active: false,
-                index: 3,
-                link: {
-                    name: "material-stock"
-                }
-            },
-            {
-                title: "Template Stock",
-                icon: "folder",
-                active: false,
-                index: 4,
-                link: {
-                    name: "template-stock"
-                }
+            title: "Material Stock",
+            icon: "storage",
+            active: false,
+            index: 3,
+            link: {
+                name: "material-stock"
             }
-        ]
-    }
+        }]
+    },
 ];

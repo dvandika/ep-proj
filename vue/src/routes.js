@@ -8,23 +8,29 @@ import AuthDebug from "./pages/auth/AuthDebug.vue";
 
 // Admin Dashboard
 import AdminDashboard from "./pages/admin/AdminDashboard.vue";
-import MaterialStock from "./pages/admin/stock/MaterialStock.vue";
-import UploadStock from "./pages/admin/stock/UploadStock.vue";
-import TemplateStock from "./pages/admin/stock/MaterialTemplate.vue";
+// Master Data
 import ListMaterial from "./pages/admin/material/ListMaterial.vue";
 import AddMaterial from "./pages/admin/material/AddMaterial.vue";
 import ListVendors from "./pages/admin/vendor/ListVendor.vue";
 import AddVendor from "./pages/admin/vendor/AddVendor.vue";
-import ListOrdersheet from "./pages/admin/ordersheet/ListOrdersheet.vue";
-import UploadOrdersheet from "./pages/admin/ordersheet/UploadOrdersheet.vue"; // Add Ordersheet
 import ListUser from "./pages/admin/user/ListUser.vue";
 import AddUser from "./pages/admin/user/AddUser.vue";
+// Daily Report
+import ListDailyReport from "./pages/admin/report/ListDailyReport.vue";
+import TemplateDailyReport from "./pages/admin/report/TemplateDailyReport.vue";
+import MaterialStock from "./pages/admin/stock/MaterialStock.vue";
+import UploadStock from "./pages/admin/stock/UploadStock.vue";
+import TemplateStock from "./pages/admin/stock/MaterialTemplate.vue";
+
+import ListOrdersheet from "./pages/admin/ordersheet/ListOrdersheet.vue";
+import UploadOrdersheet from "./pages/admin/ordersheet/UploadOrdersheet.vue"; // Add Ordersheet
+
 
 // Vendor Dashboard
-import VendorListOS from "./pages/vendor/ListOrdersheet.vue";
-import VendorStock from "./pages/vendor/VendorStock.vue";
+import VendorOrdersheet from "./pages/vendor/VendorOrdersheet.vue";
+import VendorReport from "./pages/vendor/VendorReport.vue";
 import VendorDashboard from "./pages/vendor/VendorDashboard.vue";
-
+import VendorTemplateReport from "./pages/vendor/VendorTemplateReport.vue";
 // Global Routes
 import NotFound from "./pages/404.vue";
 import Forbidden from "./pages/403.vue";
@@ -135,6 +141,18 @@ export default [
                 path: "ordersheet/upload",
                 component: UploadOrdersheet
             },
+            // vendor daily report
+            {
+                name: "list-daily-report",
+                path: "report",
+                component: ListDailyReport
+            },
+            {
+                name: "template-daily-report",
+                path: "report/template",
+                component: TemplateDailyReport
+            },
+
             {
                 name: "material-stock",
                 path: "stock",
@@ -190,25 +208,30 @@ export default [
         beforeEnter: isVendorAuth,
         component: DashboardLayout,
         children: [{
-                name: "home-vendor",
+                name: "vendor-home",
                 path: "home",
                 component: VendorDashboard
             },
             {
                 name: "vendor-os",
                 path: "ordersheet",
-                component: VendorListOS
+                component: VendorOrdersheet // list & download
             },
             {
-                name: "vendor-stock",
-                path: "stock",
-                component: VendorStock
+                name: "vendor-report",
+                path: "report",
+                component: VendorReport // sekaligus upload
+            },
+            {
+                name: "vendor-template-report",
+                path: "report/template",
+                component: VendorTemplateReport
             }
         ]
     },
     {
         name: "under-constructed",
-        path: site_url + "/v1/c/",
+        path: site_url + "/v1/constructed/",
         component: DashboardLayout,
         children: [{
             name: "construct",

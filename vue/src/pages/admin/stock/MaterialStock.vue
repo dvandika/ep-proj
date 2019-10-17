@@ -24,7 +24,6 @@
         </vs-col>
       </vs-row>
       <vs-row
-        :vs-show="filters == 2"
         vs-w="11"
         vs-type="flex"
         vs-justify="left"
@@ -33,7 +32,7 @@
       >
         <vs-col vs-offset="1" vs-w="3">Date</vs-col>
         <vs-col vs-offset="1" vs-w="6">
-          <date-picker v-model="date" type="date" :lang="lang" format="DD-MM-YYYY"></date-picker>
+          <date-picker v-model="date" type="date" lang="en" format="DD-MM-YYYY"></date-picker>
         </vs-col>
       </vs-row>
       <!-- end of menu -->
@@ -41,7 +40,7 @@
       <vs-row vs-type="flex" vs-justify="left" vs-w="11" vs-align="center">
         <vs-col vs-offset="8" vs-w="3">
           <vs-button
-          @click="filter"
+            @click="filter"
             class="inline"
             type="filled"
             icon="search"
@@ -49,16 +48,15 @@
             size="small"
             style="margin-bottom: 20px; margin-right: 10px;"
           >Filter</vs-button>
-          <router-link :to="{name: 'upload-stock'}">
-            <vs-button
-              class="inline"
-              type="filled"
-              icon="add"
-              color="primary"
-              size="small"
-              style="margin-bottom: 20px;"
-            >Report</vs-button>
-          </router-link>
+          <vs-button
+            @click="popup=true"
+            class="inline"
+            type="filled"
+            icon="add"
+            color="primary"
+            size="small"
+            style="margin-bottom: 20px;"
+          >Report</vs-button>
         </vs-col>
       </vs-row>
 
@@ -70,7 +68,7 @@
             <template slot="thead">
               <vs-th sort-key="idx">ID</vs-th>
               <vs-th sort-key="vendorname">Vendor Name</vs-th>
-              <vs-th sort-key="filepath">File Path</vs-th>
+              <vs-th sort-key="filepath">File Name</vs-th>
               <vs-th sort-key="stockdate">Date Stock</vs-th>
               <vs-th sort-key="dateupload">Date Upload</vs-th>
               <vs-th sort-key="actions">Actions</vs-th>
@@ -79,8 +77,8 @@
               <vs-tr :data="tr" :key="indextr" v-for="(tr,indextr) in data">
                 <vs-td :data="tr.id">{{ tr.id }}</vs-td>
                 <vs-td :data="tr.vendorname">{{ tr.vendorname }}</vs-td>
-                <vs-td :data="tr.filepath">{{ tr.filepath }}</vs-td>
-                <vs-td :data="tr.stockdate">{{ tr.stockdate }}</vs-td>
+                <vs-td :data="tr.filename">{{ tr.filename }}</vs-td>
+                <vs-td :data="tr.datestock">{{ tr.datestock }}</vs-td>
                 <vs-td :data="tr.dateupload">{{ tr.dateupload }}</vs-td>
                 <vs-td :data="tr.id">
                   <vs-button size="medium" @click="edit(tr.id)" style="margin-right: 2px">
@@ -103,6 +101,7 @@
 <script>
 import { mapGetters } from "vuex";
 import DatePicker from "vue2-datepicker";
+
 export default {
   name: "material-stock",
   components: {
@@ -117,6 +116,7 @@ export default {
   },
   data() {
     return {
+      popup: false,
       file: null,
       date: "",
       filters: 1,
@@ -125,31 +125,11 @@ export default {
         { id: 1, value: 1, text: "Tampilkan Semua" },
         { id: 2, value: 2, text: "Tampilkan Berdasarkan Tanggal" }
       ],
-      vendor_option: [],
-      lang: {
-        days: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
-        months: [
-          "Januari",
-          "Februari",
-          "Maret",
-          "April",
-          "Mei",
-          "Juni",
-          "Juli",
-          "Agustus",
-          "September",
-          "Oktober",
-          "November",
-          "Desember"
-        ],
-        placeholder: {
-          date: "Pilih Tanggal"
-        }
-      }
+      vendor_option: []
     };
   },
   methods: {
-    fetchReports() {
+    fetchReport() {
       axios.get(this.site_url + "/stock").then(res => {
         this.stocks = res.data.stock;
       });
@@ -159,7 +139,7 @@ export default {
     }
   },
   created() {
-    this.fetchReports();
+    this.fetchReport();
   },
   beforeCreate() {
     this.$store.dispatch("pages/changeIndex", "3");
