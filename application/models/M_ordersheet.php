@@ -28,7 +28,7 @@ class M_ordersheet extends CI_Model
             ->where($where)
             ->group_by('os_no')
             ->from("$this->table o")
-            ->order_by('os_delivery_date', 'ASC')
+            ->order_by('o.os_transm', 'ASC')
             ->get()
             ->result();
     }
